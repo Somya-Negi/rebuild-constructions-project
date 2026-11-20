@@ -1,0 +1,11 @@
+/* Privacy page layout. */
+.privacy-demo-page { padding: clamp(8rem, 15vh, 11rem) 0 5rem; min-height: 80vh; background: var(--surface); }
+.privacy-demo-page .container { max-width: 860px; }
+.privacy-demo-page h1 { font: 400 clamp(2.2rem, 7vw, 4rem)/1.05 var(--font-display); margin: .7rem 0 1rem; }
+.privacy-demo-page h2 { font: 400 1.6rem/1.2 var(--font-display); margin: 2rem 0 .5rem; }
+.privacy-demo-page p { max-width: 74ch; font-size: 1rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem; }
+.privacy-demo-page .privacy-intro { color: var(--ink); }
+.privacy-demo-page .button { display: inline-flex; margin-top: 1.4rem; }
+
+/* Privacy page background. */
+.privacy-demo-page { background: var(--brand-light); color: var(--brand-dark); }

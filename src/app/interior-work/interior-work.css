@@ -1,0 +1,134 @@
+.interior-overview {
+  padding-top: 82px;
+  background: var(--brand-light);
+  color: var(--brand-dark);
+}
+
+.interior-intro {
+  padding-block: clamp(1.8rem, 5vw, 4.5rem);
+  background: #ede6db;
+}
+
+.interior-intro-layout {
+  display: grid;
+  gap: clamp(1.5rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.interior-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .4rem;
+  margin-bottom: 1rem;
+  font-size: var(--text-small);
+  color: var(--muted);
+}
+
+.interior-breadcrumb a {
+  color: var(--brand-dark);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.interior-intro h1 {
+  font: 400 clamp(3.1rem, 8vw, 7.5rem)/.98 var(--font-display);
+  letter-spacing: -.065em;
+}
+
+.interior-intro-copy p {
+  max-width: 35ch;
+  margin-top: 1rem;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.interior-intro-photo {
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+
+.interior-services {
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+}
+
+.interior-service-list {
+  margin-top: clamp(1.15rem, 3vw, 2rem);
+  border-top: 1px solid var(--border);
+}
+
+.interior-service-list li {
+  border-bottom: 1px solid var(--border);
+}
+
+.interior-service-link {
+  display: grid;
+  grid-template-columns: clamp(3.5rem, 15vw, 4.75rem) minmax(0, 1fr) auto;
+  grid-template-areas: 'photo title arrow' 'photo description arrow';
+  align-items: center;
+  gap: .3rem clamp(.65rem, 2vw, 1.5rem);
+  padding-block: .95rem;
+  transition: background-color .2s ease;
+}
+
+.interior-service-link:hover,
+.interior-service-link:focus-visible {
+  background: #f0ebe3;
+}
+
+.interior-service-photo {
+  grid-area: photo;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.interior-service-link h3 {
+  grid-area: title;
+  align-self: end;
+  font: 400 clamp(1.25rem, 3vw, 2.1rem)/1.12 var(--font-display);
+  letter-spacing: -.025em;
+}
+
+.interior-service-link p {
+  grid-area: description;
+  align-self: start;
+  max-width: 42ch;
+  color: var(--muted);
+  font-size: var(--text-small);
+  line-height: 1.45;
+}
+
+.interior-service-arrow {
+  grid-area: arrow;
+  display: grid;
+  place-items: center;
+  width: clamp(2rem, 4.5vw, 2.9rem);
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: var(--brand-bronze);
+}
+
+.interior-service-link:hover .interior-service-arrow,
+.interior-service-link:focus-visible .interior-service-arrow {
+  color: var(--brand-light);
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+}
+
+@media (min-width: 800px) {
+  .interior-overview { padding-top: 104px; }
+}
+
+@media (min-width: 900px) {
+  .interior-intro-layout { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+  .interior-intro-photo { aspect-ratio: 16 / 10; }
+  .interior-service-link {
+    grid-template-columns: 9rem minmax(0, 1fr) minmax(0, 1.1fr) auto;
+    grid-template-areas: 'photo title description arrow';
+    column-gap: clamp(1.5rem, 3vw, 3rem);
+  }
+  .interior-service-photo { aspect-ratio: 3 / 2; }
+  .interior-service-link h3,
+  .interior-service-link p { align-self: center; }
+}

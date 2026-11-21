@@ -31,6 +31,7 @@ function NavigationLinks({ pathname, expanded, setExpanded, closeMenu, mobile = 
           })}
         </div>
       </div>
+      <Link href="/projects" className="nav-regular-link" aria-current={current('/projects')} onClick={closeMenu}>Projects</Link>
       <Link href="/#approach" className="nav-regular-link" onClick={closeMenu}>How It Works</Link>
       <Link href="/#contact" className={mobile ? 'drawer-contact' : 'nav-regular-link'} onClick={closeMenu}>
         Contact{mobile && <ArrowUpRight size={18} aria-hidden="true" />}

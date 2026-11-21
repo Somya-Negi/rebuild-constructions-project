@@ -1,4 +1,5 @@
 import './globals.css';
+import './projects.css';
 import Navigation from '@/components/Navigation';
 import SiteFooter from '@/components/SiteFooter';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';

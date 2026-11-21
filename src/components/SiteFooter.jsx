@@ -6,7 +6,7 @@ import { serviceGroups, groupServices, serviceHref } from '@/data/catalog';
 export default function SiteFooter() {
   return <footer className="footer"><div className="container footer-main">
     <div className="footer-brand-col"><Link className="footer-logo-frame" href="/" aria-label={`${site.brand} home`}><img src={site.logo} alt={`${site.brand} logo`} /></Link><span className="footer-descriptor">{site.descriptor}</span><p>{site.tagline}</p></div>
-    <div className="footer-navigation"><span className="footer-heading">PAGES</span><Link href="/">Home</Link><Link href="/construction">Construction</Link><Link href="/interior-work">Interior Work</Link><Link href="/#approach">How We Work</Link></div>
+    <div className="footer-navigation"><span className="footer-heading">PAGES</span><Link href="/">Home</Link><Link href="/construction">Construction</Link><Link href="/interior-work">Interior Work</Link><Link href="/projects">Projects</Link><Link href="/#approach">How We Work</Link></div>
     <div className="footer-navigation"><span className="footer-heading">SERVICES</span>{serviceGroups.map(group => <div key={group.id} className="footer-service-group"><span>{group.shortTitle}</span>{groupServices(group.id).map(service => <Link href={serviceHref(service.slug)} key={service.slug}>{service.title}</Link>)}</div>)}</div>
     <div className="footer-contact-col">
       <span className="footer-heading">CONTACT</span>

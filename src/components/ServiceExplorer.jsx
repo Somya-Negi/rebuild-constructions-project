@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowUpRight, Building2, Sofa } from 'lucide-react';
+import { Building2, Sofa } from 'lucide-react';
 import ServiceCard from '@/components/ServiceCard';
 import { serviceGroups, groupServices } from '@/data/catalog';
 
@@ -26,15 +26,38 @@ export default function ServiceExplorer({ showIntro = true }) {
         </div>
       </div>
     </section>}
-    {serviceGroups.map(group => <section className={`section service-division service-division-${group.id}`} key={group.id} id={`${group.id}-services`} aria-labelledby={`${group.id}-heading`}>
+    {serviceGroups.map(group => {
+      const Icon = group.id === 'construction' ? Building2 : Sofa;
+      const destination = group.id === 'construction' ? '/construction' : '/interior-work';
+      return <section className={`section service-division service-division-${group.id}`} key={group.id} id={`${group.id}-services`} aria-labelledby={`${group.id}-heading`}>
       <div className="container">
         <div className="service-division-header">
-          <div><h2 className="display-heading" id={`${group.id}-heading`}>{group.title}</h2><p>{group.description}</p></div>
+          <div className="service-division-meta">
+            <span className="service-division-index"><span>{group.number}</span><span>{group.shortTitle}</span></span>
+            <span className="service-division-icon" aria-hidden="true"><Icon size={26} strokeWidth={1.25} /></span>
+          </div>
+          <div className="service-division-heading-row">
+            <div>
+              <h2 className="display-heading" id={`${group.id}-heading`}>{group.heading}</h2>
+              <p>{group.description}</p>
+            </div>
+            <Link className={`service-division-link ${group.id === 'construction' ? 'service-division-link-light' : ''}`} href={destination}>{group.cta}</Link>
+          </div>
         </div>
-        <div className="service-cards-grid">
-          {groupServices(group.id).map(service => <ServiceCard key={service.slug} service={service} />)}
+        <div className="service-division-body">
+          <aside className="service-division-aside" aria-label={`${group.shortTitle} overview`}>
+            <span className="service-division-aside-label">A considered approach</span>
+            <p>{group.aside}</p>
+            <ul>
+              {group.highlights.map(item => <li key={item}>{item}</li>)}
+            </ul>
+          </aside>
+          <div className="service-cards-grid">
+            {groupServices(group.id).map(service => <ServiceCard key={service.slug} service={service} />)}
+          </div>
         </div>
       </div>
-    </section>)}
+    </section>;
+    })}
   </div>;
 }

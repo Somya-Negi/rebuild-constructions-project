@@ -529,3 +529,85 @@ video { max-width: 100%; }
 .page-banner-label { color: var(--brand-bronze-light); }
 .service-cta-v3 { background: var(--brand-dark); color: var(--brand-light); }
 .service-cta-v3 p { color: var(--brand-light-copy); }
+
+/* Home service bands: a stronger editorial treatment after the hero. */
+.service-division {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3.8rem, 8vw, 7rem);
+}
+.service-division::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 8%;
+  width: 1px;
+  height: 100%;
+  background: currentColor;
+  opacity: .08;
+  pointer-events: none;
+}
+.service-division > .container { position: relative; z-index: 1; }
+.service-division-header { max-width: none; margin-bottom: 2.25rem; gap: 1.2rem; }
+.service-division-meta { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.service-division-index { gap: .85rem; }
+.service-division-index > span:first-child { font-size: 2.7rem; }
+.service-division-index > span:last-child { font-size: .72rem; }
+.service-division-icon {
+  display: grid;
+  place-items: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: .9;
+}
+.service-division-heading-row { display: grid; gap: 1.15rem; max-width: 920px; }
+.service-division-heading-row .display-heading { max-width: 760px; margin-bottom: .7rem; font-size: clamp(2.6rem, 6vw, 5rem); }
+.service-division-heading-row p { max-width: 620px; color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.65; }
+.service-division-construction .service-division-heading-row p { color: var(--brand-light-copy); }
+.service-division-link {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 44px;
+  padding: .7rem 1rem;
+  border: 1px solid rgba(35,52,59,.35);
+  color: var(--brand-dark);
+  font-size: var(--text-small);
+  font-weight: 750;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+.service-division-link:hover { background: var(--brand-dark); color: var(--brand-light); transform: translateY(-2px); }
+.service-division-link-light { border-color: rgba(251,249,245,.45); color: var(--brand-light); }
+.service-division-link-light:hover { background: var(--brand-light); color: var(--brand-dark); }
+.service-division-body { display: grid; gap: 2rem; }
+.service-division-aside { align-self: start; padding-top: 1rem; border-top: 1px solid currentColor; }
+.service-division-aside-label { display: block; margin-bottom: .65rem; color: var(--brand-bronze); font-size: var(--text-label); font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+.service-division-construction .service-division-aside-label { color: var(--brand-bronze-light); }
+.service-division-aside p { max-width: 300px; color: var(--muted); font-size: var(--text-small); line-height: 1.55; }
+.service-division-construction .service-division-aside p { color: var(--brand-light-copy); }
+.service-division-aside ul { display: grid; gap: .55rem; margin: 1.25rem 0 0; padding: 0; list-style: none; }
+.service-division-aside li { display: flex; gap: .6rem; align-items: baseline; color: inherit; font-size: var(--text-small); }
+.service-division-aside li::before { content: ''; width: 7px; height: 7px; flex: none; border-radius: 50%; background: var(--brand-bronze); }
+.service-division-construction .service-division-aside li::before { background: var(--brand-bronze-light); }
+.service-division .service-cards-grid { min-width: 0; }
+.service-division .service-card-v3 { box-shadow: 0 18px 38px rgba(8, 22, 18, .08); }
+.service-division-construction .service-card-v3 { box-shadow: 0 22px 46px rgba(4, 15, 18, .24); }
+.service-division .service-card-image-link { aspect-ratio: 1.6; }
+.service-division .service-card-content { padding: 1.35rem; }
+.service-division .service-card-content h3 { font-size: clamp(1.5rem, 2.2vw, 2rem); }
+.service-division .service-card-action { color: var(--brand-bronze); }
+.service-division-construction .service-card-action { color: var(--brand-bronze); }
+
+@media (min-width: 800px) {
+  .service-division-heading-row { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 2rem; }
+  .service-division-heading-row .service-division-link { margin-bottom: .2rem; }
+  .service-division-body { grid-template-columns: minmax(180px, .34fr) minmax(0, 1.66fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .service-division .service-card-whole-home .service-card-image-link { aspect-ratio: 1.85; }
+}
+
+@media (min-width: 1100px) {
+  .service-division .service-card-image-link { aspect-ratio: 1.18; }
+  .service-division .service-card-whole-home .service-card-image-link { aspect-ratio: 2.15; }
+}

@@ -8,7 +8,7 @@ import ContactSection from '@/components/ContactSection';
 export default function Home() {
   return <main id="main-content">
     <Hero />
-    <ServiceExplorer />
+    <ServiceExplorer showIntro={false} />
     <ProjectShowcase />
     <WorkingProcess />
     <ReviewsPreview />

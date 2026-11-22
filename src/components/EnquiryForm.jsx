@@ -17,6 +17,7 @@ export default function EnquiryForm ({
   variant = 'page',
   source = 'contact'
 }) {
+  const isModal = variant === 'modal'
   const [selectedService, setSelectedService] = useState(
     allowedServices.includes(initialService) ? initialService : ''
   )
@@ -110,7 +111,7 @@ export default function EnquiryForm ({
     return (
       <div
         className={`enquiry-form enquiry-confirmation ${
-          variant === 'modal' ? 'enquiry-form-modal' : ''
+          isModal ? 'enquiry-form-modal' : ''
         }`}
         role='status'
       >
@@ -152,7 +153,7 @@ export default function EnquiryForm ({
   return (
     <form
       className={`enquiry-form ${
-        variant === 'modal' ? 'enquiry-form-modal' : ''
+        isModal ? 'enquiry-form-modal' : ''
       }`}
       onSubmit={handleSubmit}
     >
@@ -201,51 +202,61 @@ export default function EnquiryForm ({
             disabled={state === 'submitting'}
           />
         </label>
-        <label>
-          <span className='field-title'>
-            Service <span className='field-required'>*</span>
-          </span>
-          <select
-            name='service'
-            required
-            value={selectedService}
-            onChange={event => setSelectedService(event.target.value)}
-            disabled={state === 'submitting'}
-          >
-            <option value='' disabled>
-              Select a service
-            </option>
-            {services.map(item => (
-              <option value={item.inquiryLabel} key={item.slug}>
-                {item.title}
-              </option>
-            ))}
-            <option value='Other'>Other work</option>
-          </select>
-        </label>
-        <label>
-          <span className='field-title'>
-            Project location <span className='field-required'>*</span>
-          </span>
-          <input
-            name='area'
-            type='text'
-            required
-            maxLength={120}
-            placeholder='City / area of the project'
-            disabled={state === 'submitting'}
-          />
-        </label>
-        <label className='field-wide'>
-          <span className='field-title'>Project details (optional)</span>
-          <textarea
-            name='message'
-            rows={3}
-            maxLength={1500}
-            placeholder='What would you like to build or renovate?'
-            disabled={state === 'submitting'}
-          />
-        </label>
+        {isModal ? (
+          <>
+            <input type='hidden' name='service' value={selectedService || 'Other'} />
+            <input type='hidden' name='area' value='Not specified' />
+            <input type='hidden' name='message' value='' />
+          </>
+        ) : (
+          <>
+            <label>
+              <span className='field-title'>
+                Service <span className='field-required'>*</span>
+              </span>
+              <select
+                name='service'
+                required
+                value={selectedService}
+                onChange={event => setSelectedService(event.target.value)}
+                disabled={state === 'submitting'}
+              >
+                <option value='' disabled>
+                  Select a service
+                </option>
+                {services.map(item => (
+                  <option value={item.inquiryLabel} key={item.slug}>
+                    {item.title}
+                  </option>
+                ))}
+                <option value='Other'>Other work</option>
+              </select>
+            </label>
+            <label>
+              <span className='field-title'>
+                Project location <span className='field-required'>*</span>
+              </span>
+              <input
+                name='area'
+                type='text'
+                required
+                maxLength={120}
+                placeholder='City / area of the project'
+                disabled={state === 'submitting'}
+              />
+            </label>
+            <label className='field-wide'>
+              <span className='field-title'>Project details (optional)</span>
+              <textarea
+                name='message'
+                rows={3}
+                maxLength={1500}
+                placeholder='What would you like to build or renovate?'
+                disabled={state === 'submitting'}
+              />
+            </label>
+          </>
+        )}
         <div className='enquiry-honeypot' aria-hidden='true'>
           <label>
             Leave this blank
@@ -283,7 +294,9 @@ export default function EnquiryForm ({
         {state === 'submitting'
           ? 'Sending your request…'
           : availability === 'connected'
-          ? 'Send Estimate Request'
+          ? isModal
+            ? 'Request a Callback'
+            : 'Send Estimate Request'
           : availability === 'checking'
           ? 'Checking availability…'
           : 'Online Requests Unavailable'}

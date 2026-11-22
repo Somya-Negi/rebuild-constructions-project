@@ -1,15 +1,27 @@
 .customer-stories-section {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(2.35rem, 4.5vw, 3.6rem);
   color: var(--brand-light);
-  background: var(--brand-dark);
+  background:
+    radial-gradient(circle at 8% 0%, rgba(230, 198, 168, .1), transparent 30%),
+    linear-gradient(145deg, #23343b 0%, #1d2d33 100%);
+  border-block: 1px solid rgba(230, 198, 168, .18);
 }
 
 .customer-stories-header {
-  margin-bottom: clamp(1.4rem, 3vw, 2.25rem);
+  margin-bottom: clamp(1.15rem, 2.5vw, 1.7rem);
+}
+
+.customer-stories-header .display-heading {
+  font-size: clamp(2.35rem, 4.8vw, 4.5rem);
+  line-height: 1;
 }
 
 .customer-stories-header > p {
   margin-top: .55rem;
   color: var(--brand-light-copy);
+  max-width: 44ch;
 }
 
 .customer-stories-track {
@@ -24,16 +36,40 @@
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
+  padding: .25rem .15rem .75rem;
 }
 
 .customer-story {
+  position: relative;
   display: flex;
   min-width: 0;
   padding: clamp(1.25rem, 2.5vw, 2rem);
-  border-radius: 1rem;
+  min-height: 290px;
+  border: 1px solid rgba(35, 52, 59, .12);
+  border-radius: 1.15rem;
   color: var(--brand-dark);
-  background: var(--brand-light);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, .5), transparent 38%),
+    var(--brand-light);
+  box-shadow: 0 16px 30px rgba(5, 17, 21, .2), inset 0 1px 0 rgba(255, 255, 255, .9);
   scroll-snap-align: start;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.customer-story::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  width: 3.2rem;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: var(--brand-bronze);
+}
+
+.customer-story:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 38px rgba(5, 17, 21, .28), inset 0 1px 0 rgba(255, 255, 255, .9);
 }
 
 .customer-story figure {
@@ -47,18 +83,22 @@
   display: flex;
   align-items: center;
   gap: .85rem;
+  padding-top: .05rem;
 }
 
 .customer-story-person .customer-story-avatar {
   display: grid;
-  flex: 0 0 3.5rem;
+  flex: 0 0 3.35rem;
   place-items: center;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3.35rem;
+  height: 3.35rem;
   border-radius: 50%;
+  border: 1px solid rgba(130, 90, 62, .18);
   background: #eaddcb;
   color: #61442e;
-  font-weight: 750;
+  font-size: .95rem;
+  font-weight: 800;
+  letter-spacing: .04em;
 }
 
 .customer-story:nth-child(3n + 2) .customer-story-avatar {
@@ -73,6 +113,7 @@
 
 .customer-story-person strong {
   font-size: 1.05rem;
+  letter-spacing: -.01em;
 }
 
 .customer-story-person p,
@@ -84,13 +125,19 @@
 
 .customer-story blockquote {
   display: grid;
-  gap: .5rem;
-  font: 400 clamp(1.15rem, 1.6vw, 1.4rem)/1.45 var(--font-display);
+  gap: .55rem;
+  font: 400 clamp(1.05rem, 1.35vw, 1.2rem)/1.36 var(--font-display);
 }
 
 .customer-story blockquote svg,
 .customer-story-location svg {
   color: var(--brand-bronze);
+}
+
+.customer-story blockquote svg {
+  width: 25px;
+  height: 25px;
+  opacity: .9;
 }
 
 .customer-story-location {
@@ -99,7 +146,7 @@
   gap: .4rem;
   margin-top: auto;
   padding-top: .95rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(35, 52, 59, .12);
 }
 
 .customer-stories-controls {
@@ -107,7 +154,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: .65rem;
   font-size: var(--text-small);
 }
 
@@ -126,14 +173,57 @@
   cursor: default;
 }
 
+@media (min-width: 768px) {
+  .customer-stories-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .customer-stories-header > p {
+    margin: 0;
+    text-align: right;
+  }
+}
+
 @media (max-width: 1023px) {
   .customer-stories-track { --visible-stories: min(var(--story-count), 2); }
 }
 
 @media (max-width: 767px) {
+  .customer-stories-section {
+    padding-block: 2.2rem 2.5rem;
+  }
+
+  .customer-stories-header .display-heading {
+    font-size: 2.35rem;
+  }
+
   .customer-stories-track { --visible-stories: 1; }
+
+  .customer-story {
+    min-height: 0;
+    padding: 1rem;
+    border-radius: .95rem;
+  }
+
+  .customer-story figure {
+    gap: .85rem;
+  }
+
+  .customer-story-person .customer-story-avatar {
+    flex-basis: 3.1rem;
+    width: 3.1rem;
+    height: 3.1rem;
+  }
+
+  .customer-story blockquote {
+    font-size: 1.05rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .customer-stories-track { scroll-behavior: auto; }
+  .customer-story { transition: none; }
 }

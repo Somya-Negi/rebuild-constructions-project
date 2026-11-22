@@ -13,6 +13,7 @@ export default function ReviewsCarousel({ children, count }) {
   const trackRef = useRef(null);
   const [firstIndex, setFirstIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     if (count < 2) return;
@@ -26,6 +27,24 @@ export default function ReviewsCarousel({ children, count }) {
     return () => observer.disconnect();
   }, [count]);
 
+  useEffect(() => {
+    if (count < 2 || isPaused) return;
+
+    const interval = window.setInterval(() => {
+      const track = trackRef.current;
+      if (!track) return;
+
+      const step = getCardStep(track);
+      if (!step) return;
+
+      const lastIndex = Math.max(0, count - visibleCount);
+      const nextIndex = firstIndex >= lastIndex ? 0 : firstIndex + 1;
+      track.scrollTo({ left: nextIndex * step, behavior: 'smooth' });
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, [count, firstIndex, isPaused, visibleCount]);
+
   function moveTo(index) {
     if (index < 0 || index > count - visibleCount) return;
     const track = trackRef.current;
@@ -38,7 +57,18 @@ export default function ReviewsCarousel({ children, count }) {
         className="customer-stories-track"
         id={trackId}
         ref={trackRef}
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Customer stories"
         style={{ '--story-count': count }}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
+        onFocus={() => setIsPaused(true)}
+        onBlur={event => {
+          if (!event.currentTarget.contains(event.relatedTarget)) setIsPaused(false);
+        }}
         onScroll={count > 1 ? event => {
           const track = event.currentTarget;
           setFirstIndex(Math.round(track.scrollLeft / getCardStep(track)));

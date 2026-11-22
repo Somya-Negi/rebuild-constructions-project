@@ -264,6 +264,7 @@ svg { flex-shrink: 0; }
 .enquiry-form-modal .form-heading { display: none; }
 .enquiry-form-modal .form-fields { gap: .8rem; }
 .enquiry-form-modal .form-disclaimer { line-height: 1.4; }
+.enquiry-form-modal .enquiry-whatsapp-alternative { display: none; }
 .media-slot-v4 { margin: 0; position: relative; display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 195px; padding: 1.4rem; overflow: hidden; isolation: isolate; border: 1px dashed #a7a79d; background: linear-gradient(140deg, #e5e2da 0%, #d9ddd4 100%); text-align: center; }
 .media-slot-v4::after { content: ''; position: absolute; inset: .7rem; z-index: -1; border: 1px solid #ffffffa4; pointer-events: none; }
 .media-slot-video-v4 { background: linear-gradient(135deg, #28352d, #4c584d); color: #fff; border-color: #9faf9a; }
@@ -610,4 +611,361 @@ video { max-width: 100%; }
 @media (min-width: 1100px) {
   .service-division .service-card-image-link { aspect-ratio: 1.18; }
   .service-division .service-card-whole-home .service-card-image-link { aspect-ratio: 2.15; }
+}
+
+/* Intentional mobile layouts for the two homepage service bands. */
+@media (max-width: 799px) {
+  .service-division {
+    padding-block: 3.65rem 4.25rem;
+  }
+
+  .service-division-header {
+    margin-bottom: 2rem;
+  }
+
+  .service-division-meta {
+    align-items: flex-start;
+  }
+
+  .service-division-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .service-division-heading-row {
+    gap: 1rem;
+  }
+
+  .service-division-heading-row .display-heading {
+    font-size: clamp(2.55rem, 11vw, 3.7rem);
+    line-height: .98;
+    text-wrap: balance;
+  }
+
+  .service-division-heading-row p {
+    font-size: .96rem;
+    line-height: 1.55;
+  }
+
+  .service-division-link {
+    width: fit-content;
+    min-height: 46px;
+    padding-inline: 1rem 2.7rem;
+    position: relative;
+  }
+
+  .service-division-link::after {
+    content: '\2197';
+    position: absolute;
+    right: .9rem;
+    font-size: 1rem;
+  }
+
+  .service-division-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+
+  .service-division .service-cards-grid {
+    order: 1;
+  }
+
+  .service-division .service-division-aside {
+    display: none;
+  }
+
+  /* Construction reads as a single, confident feature followed by its route map. */
+  .service-division-construction .service-card-v3 {
+    border: 0;
+    border-left: 2px solid var(--brand-bronze-light);
+    background: #2c4148;
+    box-shadow: 0 18px 34px rgba(4, 15, 18, .28);
+  }
+
+  .service-division-construction .service-card-image-link {
+    aspect-ratio: 1.35;
+  }
+
+  .service-division-construction .service-card-content {
+    padding: 1.2rem 1.25rem 1.35rem;
+  }
+
+  .service-division-construction .service-card-content h3 {
+    color: var(--brand-light);
+    font-size: 1.65rem;
+  }
+
+  .service-division-construction .service-card-content p {
+    color: var(--brand-light-copy);
+    font-size: .9rem;
+  }
+
+  .service-division-construction .service-card-action {
+    color: var(--brand-bronze-light);
+    border-color: rgba(230, 198, 168, .55);
+  }
+
+  .service-division-construction .service-division-aside {
+    padding: 1.1rem 0 0;
+  }
+
+  .service-division-construction .service-division-aside p {
+    max-width: 34ch;
+  }
+
+  .service-division-construction .service-division-aside ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .55rem;
+    margin-top: 1.35rem;
+  }
+
+  .service-division-construction .service-division-aside li {
+    display: block;
+    padding-top: .65rem;
+    border-top: 1px solid rgba(251, 249, 245, .25);
+    font-size: .73rem;
+    line-height: 1.4;
+  }
+
+  .service-division-construction .service-division-aside li::before {
+    display: block;
+    margin-bottom: .45rem;
+  }
+
+  /* Interiors gets a lighter editorial brief and a compact, scannable card grid. */
+  .service-division-interiors {
+    background: #f5f1e9;
+  }
+
+  .service-division-interiors .service-division-header {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(35, 52, 59, .22);
+  }
+
+  .service-division-interiors .service-division-body {
+    gap: 1.45rem;
+  }
+
+  .service-division-interiors .service-division-aside {
+    padding: 1rem;
+    border: 1px solid rgba(35, 52, 59, .2);
+    background: rgba(251, 249, 245, .72);
+  }
+
+  .service-division-interiors .service-division-aside ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .55rem;
+    margin-top: 1rem;
+  }
+
+  .service-division-interiors .service-division-aside li {
+    display: block;
+    font-size: .72rem;
+    line-height: 1.4;
+  }
+
+  .service-division-interiors .service-division-aside li::before {
+    display: block;
+    margin-bottom: .35rem;
+  }
+
+  .service-division-interiors .service-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .7rem;
+  }
+
+  .service-division-interiors .service-card-v3 {
+    border-color: #d4cec4;
+    box-shadow: 0 10px 24px rgba(35, 52, 59, .08);
+  }
+
+  .service-division-interiors .service-card-whole-home {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  }
+
+  .service-division-interiors .service-card-image-link {
+    aspect-ratio: 1.2;
+  }
+
+  .service-division-interiors .service-card-whole-home .service-card-image-link {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+
+  .service-division-interiors .service-card-content {
+    gap: .35rem;
+    padding: .9rem;
+  }
+
+  .service-division-interiors .service-card-content h3 {
+    font-size: 1.12rem;
+    line-height: 1.08;
+  }
+
+  .service-division-interiors .service-card-content p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    font-size: .76rem;
+    line-height: 1.4;
+  }
+
+  .service-division-interiors .service-card-action {
+    min-height: 34px;
+    font-size: .73rem;
+  }
+}
+
+/* Compact, modern enquiry presentation for both the contact section and quote dialog. */
+.enquiry-form {
+  border-radius: 1.1rem;
+  border-color: rgba(35, 52, 59, .14);
+  box-shadow: 0 18px 45px rgba(12, 27, 24, .1);
+}
+
+.form-fields input,
+.form-fields select,
+.form-fields textarea {
+  border-radius: .65rem;
+  background: #fffefa;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+.form-fields input:focus,
+.form-fields select:focus,
+.form-fields textarea:focus {
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(148, 103, 72, .14);
+}
+
+.enquiry-form .btn {
+  border-radius: .65rem;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.enquiry-form .btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.quote-dialog {
+  width: min(92vw, 560px);
+  max-height: min(90dvh, 760px);
+  border: 1px solid rgba(35, 52, 59, .16);
+  border-radius: 1.1rem;
+}
+
+.quote-dialog-content {
+  padding: clamp(1rem, 3vw, 1.5rem);
+  background: var(--brand-light);
+}
+
+.quote-dialog-top h2 {
+  max-width: none;
+  white-space: nowrap;
+  font-size: clamp(1.75rem, 4.8vw, 2.45rem);
+}
+
+.quote-dialog .enquiry-form-modal {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.quote-dialog-close {
+  border-radius: .6rem;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.quote-dialog-close:hover {
+  border-color: var(--brand-bronze);
+  background: #f1ece4;
+}
+
+@media (max-width: 639px) {
+  .enquiry-form {
+    padding: 1rem;
+  }
+
+  .form-fields {
+    gap: .72rem;
+  }
+
+  .form-fields label {
+    gap: .24rem;
+    font-size: .76rem;
+  }
+
+  .form-fields input,
+  .form-fields select,
+  .form-fields textarea {
+    min-height: 43px;
+    padding: .56rem .7rem;
+  }
+
+  .form-fields textarea {
+    min-height: 76px;
+  }
+
+  .enquiry-form .btn {
+    min-height: 46px;
+    margin-top: .9rem;
+  }
+
+  .form-disclaimer {
+    margin-top: .5rem;
+    line-height: 1.35;
+  }
+
+  .quote-dialog {
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 28px);
+    border-radius: 1rem;
+  }
+
+  .quote-dialog-content {
+    padding: .9rem;
+  }
+
+  .quote-dialog-top {
+    gap: .65rem;
+    margin-bottom: .35rem;
+  }
+
+  .quote-dialog-top h2 {
+    font-size: clamp(1.65rem, 8vw, 2rem);
+    line-height: 1.04;
+  }
+
+  .quote-dialog-close {
+    width: 40px;
+    height: 40px;
+  }
+
+  .enquiry-form-modal .form-fields {
+    gap: .62rem;
+  }
+
+  .enquiry-form-modal .form-disclaimer {
+    font-size: .68rem;
+  }
+
+  .form-fields .enquiry-consent {
+    gap: .5rem;
+    padding-top: 0;
+    font-size: .76rem;
+    line-height: 1.35;
+  }
+
+  .form-fields .enquiry-consent > input[type="checkbox"] {
+    width: 18px;
+    min-width: 18px;
+    height: 18px;
+    min-height: 18px;
+  }
 }
